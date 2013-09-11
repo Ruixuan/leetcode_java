@@ -2,6 +2,7 @@ public class Solution {
     int min_step;
     private ArrayList<ArrayList<String>> answer;
     private ArrayList<Step> bfs;
+    private Map<String,Integer> steps;
     private int distance_str( String a, String b){
         if (a.length() != b.length()){
             return a.length();
@@ -45,11 +46,13 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         min_step = dict.size() + 1;
-        answer =  new ArrayList<ArrayList<String>>();
+        steps = new HashMap<String, Integer>();
+        answer =  new ArrayList<ArrayList<String>>();    
         bfs = new ArrayList<Step>();
         int i,j;
         Step step0 = new Step(start, 0, -1);
         bfs.add(step0);
+        steps.put(start, 0);        
         if(distance_str(start,end) == 1){
             add_answer(0,end);
             min_step = 0;
@@ -59,20 +62,28 @@ public class Solution {
             min_step = -1;
         }
         i = 0;
-        
+        Step curr;
         while( i < bfs.size()){           
-            Step curr = bfs.get(i);
+            curr = bfs.get(i);
             if (curr.step >= min_step){
                 break;
             }
             // find all possible neighbors
+            int tmp_step;
             for(String tmp: dict){             
                 if (distance_str(curr.val,tmp) == 1){
+                    if (steps.containsKey(tmp)){
+                        tmp_step = steps.get(tmp).intValue();
+                        if ( tmp_step < curr.step + 1){
+                            continue;
+                        }                    
+                    }
                     Step new_step = new Step(tmp, curr.step + 1, i);
                     bfs.add(new_step);
+                    steps.put(tmp, curr.step + 1);
                     if (distance_str(end,tmp) == 1){
                         add_answer(bfs.size() -1, end);
-                        min_step = curr.step + 1;
+                        min_step = curr.step + 1;                       
                     }
                 }
             }
