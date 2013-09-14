@@ -12,7 +12,7 @@ public class Solution {
         }
     }
 
-    List<Node> bfs;
+    LinkedList<Node> bfs;
     int size;
     int word_len;
     int min_steps;
@@ -20,7 +20,7 @@ public class Solution {
     String start, end;
 
     private void init(String start, String end, HashSet<String> dict){
-        this.dict = dict.clone();
+        this.dict = new HashSet<String>(dict);
         this.dict.add(start);
         this.dict.add(end);
         this.start = start;
@@ -40,8 +40,8 @@ public class Solution {
         char a;
         String tmp;
         Node tmp_node;
-        while(it.hasNext()){
-            curr = it.next();
+        while(!bfs.isEmpty()){
+            curr = bfs.pop();
             // replace the i-th word with a
             for(i = 0; i < word_len; i ++){
                 for(a = 'a'; a <= 'z'; a ++){
