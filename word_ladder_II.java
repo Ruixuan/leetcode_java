@@ -12,11 +12,11 @@ public class Solution {
     private class Node{
         public int steps;
         public String val;
-        public ArrayList<int> pre;
+        public ArrayList<Integer> pre;
         public Node(int steps, String val){
             this.steps = steps;
             this.val = val;
-            pre = new ArrayList<int>();
+            pre = new ArrayList<Integer>();
         }
         public String change_str(int i, char a){
             return this.val.substring(0,i) + a + this.val.substring(i+1);
@@ -47,7 +47,7 @@ public class Solution {
                         // create a new node if possible
                         if (index_of_end >= 0)
                             continue;
-                        tmp_node = new Node(tmp, curr.steps + 1);
+                        tmp_node = new Node(curr.steps + 1, tmp);
                         bfs.add(tmp_node);
                         if ( tmp.equals(end)){
                              this.index_of_end = bfs.size() - 1;
@@ -56,7 +56,7 @@ public class Solution {
                         is_in_pool.put(tmp, tmp_node);
                     }
                     
-                    if ( tmp_node.steps + 1 = curr.steps){
+                    if ( tmp_node.steps + 1 == curr.steps){
                         tmp_node.pre.add(curr_index);         
                     }
                }
@@ -70,7 +70,7 @@ public class Solution {
         Node curr = bfs.get(curr_index);
         one_answer.push(curr.val);
         if (curr_index == index_of_begin){
-            ArrayList<String> tmp_answer = ArrayList<String>(one_answer);
+            ArrayList<String> tmp_answer = new ArrayList<String>(one_answer);
             one_answer.pop();
             return;
         }
@@ -83,7 +83,7 @@ public class Solution {
 
     public ArrayList<ArrayList<String>> findLadders(String start, String end, HashSet<String> dict) {
         // init variables
-        this.word_len = start.lenght();
+        this.word_len = start.length();
         this.start = start;
         this.end = end;
         this.dict = dict;
