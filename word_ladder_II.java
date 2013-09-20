@@ -5,6 +5,7 @@ public class Solution {
     private ArrayList<Node> bfs;
     private int index_of_end;
     private int index_of_begin;
+    private int min_steps;
     private int word_len;
     private ArrayList<ArrayList<String>> answer;
     private HashMap<String, Node> is_in_pool;
@@ -35,21 +36,29 @@ public class Solution {
         Node curr, tmp_node;
         while( curr_index < bfs.size()){
            curr = bfs.get(curr_index);
+           if ( curr.steps >= min_steps){
+                break;
+           }
            for( i = 0 ; i < word_len; i ++){
                for( a = 'a'; a <= 'z'; a++){
                     tmp = curr.change_str(i,a);
                     tmp_node = is_in_pool.get(tmp);
                     if (tmp_node == null){
+                        // create a new node if possible
                         if (index_of_end >= 0)
                             continue;
                         tmp_node = new Node(tmp, curr.steps + 1);
                         bfs.add(tmp_node);
                         if ( tmp.equals(end)){
                              this.index_of_end = bfs.size() - 1;
+                             this.min_steps = curr.steps + 1;
                         }
                         is_in_pool.put(tmp, tmp_node);
                     }
-                    tmp_node.pre.add(curr_index);                       
+                    
+                    if ( tmp_node.steps + 1 = curr.steps){
+                        tmp_node.pre.add(curr_index);         
+                    }
                }
            }
 
@@ -79,6 +88,7 @@ public class Solution {
         this.end = end;
         this.dict = dict;
         this.start_bfs();
+        this.min_steps = dict.size() + 3;
         this.is_in_pool = new HashMap<String, Node>();
         LinkedList<String> one_answer = new LinkedList<String>();
         print( one_answer, index_of_end);
