@@ -3,6 +3,8 @@ public class Solution {
             // power(x, n ) = power(x*x, n/2) * x^(n mod 2)
             int i,k;
             int flag = 0;
+            if ( n == 0)
+                return 1;
             if ( x ==0){
                 return 0;
             }
@@ -12,6 +14,7 @@ public class Solution {
             }
             double answer;
             answer = 1;
+            
             while( n > 0){
                 k = n % 2;
                 if (k == 1){
@@ -20,7 +23,8 @@ public class Solution {
                 x = x * x;
                 n = n / 2;
             }
-            if (flag){
+            
+            if (flag == 1){
                 return 1/answer;
             }else{
                 return answer;
