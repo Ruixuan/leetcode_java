@@ -11,7 +11,7 @@ public class Solution {
         tail = (x ) / 2 + 1;
         while(head <= tail){
             // tricky part 1: avoid int over flow
-            k = head + ( - head + tail) / 2;
+            k = head + ( - head + tail) / 2; // alternative 
             // tricky part 2: using div rather than multiply
             tmp = x / k;
             if ( tmp == k){
