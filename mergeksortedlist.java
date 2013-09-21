@@ -19,19 +19,22 @@ public class Solution {
         int min_val = 9999999;
         int i;
         do{
+           min_val = 99999;
+           min_index = -1;
            for(i = 0; i < lists.size(); i++ ){
              curr = lists.get(i);
-             if ( curr == null)
+             if (curr == null)
                  continue;
-             if ( curr.val < min_val){
+             if (curr.val < min_val){
                 min_val = curr.val;
                 min_index = i;
              }
            }
            if ( min_index < 0) break;
-           tail.next = lists.get(min_index);
-           tail = tail.next;
-           lists.set(min_index, tail.next);
+           curr = lists.get(min_index);
+           lists.set(min_index, curr.next);
+           tail.next = curr;
+           tail = curr;
         }while( min_index >= 0);
         tail.next = null;
         return head.next;
