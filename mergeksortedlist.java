@@ -11,8 +11,6 @@
  */
 public class Solution {
     public ListNode mergeKLists(ArrayList<ListNode> lists) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         ListNode head,tail, curr;
         // this is a virtual header, the true list begins at head.next
         head = new ListNode(0);
@@ -25,7 +23,7 @@ public class Solution {
              curr = lists.get(i);
              if ( curr == null)
                  continue;
-             if ( curr.val > min_val){
+             if ( curr.val < min_val){
                 min_val = curr.val;
                 min_index = i;
              }
