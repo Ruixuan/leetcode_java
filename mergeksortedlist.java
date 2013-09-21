@@ -19,6 +19,7 @@ public class Solution {
         tail = head;
         int min_index = -1;
         int min_val = 9999999;
+        int i;
         do{
            for(i = 0; i < lists.size(); i++ ){
              curr = lists.get(i);
