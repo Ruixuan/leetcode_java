@@ -3,21 +3,22 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         int head, tail;
+        Arrays.sort(numbers);
         head = 0;
         tail = numbers.length - 1;
         while( head < tail ){
-            while(numbers[head] + numbers[tail] > target){
-                head ++;
-            }
-            while(numbers[head] + numbers[tail] > target ){
-                tail ++;
+            // find a tail that enable number[head] + number[tail] == target
+            int[] answer = new int[2];
+            while( numbers[head] + numbers[tail] > target){
+                tail --;
             }
             if ( numbers[head] + numbers[tail] == target){
-                int[] answer = new int[2];
                 answer[0] = head;
                 answer[1] = tail;
-                return answer;
+                return answer;   
             }
+            head ++;
         }
+        return answer;
     }
 }
