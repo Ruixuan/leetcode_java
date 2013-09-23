@@ -5,13 +5,13 @@ public class Solution {
             number_index_map.put(new Integer(numbers[i]), new Integer(i));
         }
         for (int i = 0; i < numbers.length; i ++){
-            Integer tmp = number_index_map.get(new Integer(numbers[i]));
+            Integer tmp = number_index_map.get(new Integer(target - numbers[i]));
             if (tmp == null){
                 continue;
             }
             int[] answer = new int[2];
             answer[0] = i + 1;
-            answer[1] = tmp.intValue();
+            answer[1] = tmp.intValue() + 1;
             return answer;
         }
         return new int[2];
