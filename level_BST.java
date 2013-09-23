@@ -12,6 +12,8 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         ArrayList<ArrayList<Integer>> answer = new ArrayList<ArrayList<Integer>>();
+        if ( root == null)
+            return answer;
         ArrayList<TreeNode> bfs = new ArrayList<TreeNode>();
         ArrayList<Integer> level = new ArrayList<Integer>();
         ArrayList<Integer> curr_level_list = new ArrayList<Integer>();
@@ -23,12 +25,12 @@ public class Solution {
         while(index < bfs.size()){
             curr = bfs.get(index);
             if ( level.get(index).equals(curr_level)){
-                curr_level_list.add(Integer(curr.val));
+                curr_level_list.add(new Integer(curr.val));
             }else{
                 answer.add(curr_level_list);
                 curr_level_list = new ArrayList<Integer>();
                 curr_level += 1;
-                curr_level_list.add(curr_level);
+                curr_level_list.add(new Integer(curr.val));
             }
             //add left
             if ( curr.left != null){
