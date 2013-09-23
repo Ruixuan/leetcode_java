@@ -1,5 +1,7 @@
 public class Solution {
     private boolean is_all_digit(String s){
+    	if (s.length() == 0) 
+    		return false;
         for( char a:s.toCharArray()){
            if  ( a <'0' || a > '9')
                return false;
@@ -14,21 +16,30 @@ public class Solution {
         String[] tmp;
         s = s.trim();
         tmp = s.split("e");
+        
+        if (tmp.length == 0)
+        	return false;
+        
         if (tmp.length > 2){
             return false;
         }
-        if ( tmp == 2){
+        if ( tmp.length == 2){
             if (!is_all_digit(tmp[1]))
                 return false;
         }
         s = tmp[0];
         tmp = s.split("\\.");
+        if (tmp.length == 0)
+        	return false;
+        
         if (tmp.length > 2){
             return false;
         }
+     
         if (tmp.length == 2){
             return is_all_digit(tmp[0]) && is_all_digit(tmp[1]);
         }else{
+        	
             return is_all_digit(tmp[0]);
         }
 
