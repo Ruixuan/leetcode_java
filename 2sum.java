@@ -7,10 +7,9 @@ public class Solution {
         Arrays.sort(numbers);
         head = 0;
         tail = numbers.length - 1;
-        
+    
         while( head < tail ){
-            // find a tail that enable number[head] + number[tail] == target
-          
+            // find a tail that enable number[head] + number[tail] == target          
             while( numbers[head] + numbers[tail] > target){
                 tail --;
             }
