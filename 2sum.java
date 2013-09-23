@@ -5,7 +5,7 @@ public class Solution {
             number_index_map.put(new Integer(numbers[i]), new Integer(i));
         }
         for (int i = 0; i < numbers.length; i ++){
-            Integer tmp = number_index_map.get(new Integer(i));
+            Integer tmp = number_index_map.get(new Integer(numbers[i]));
             if (tmp == null){
                 continue;
             }
