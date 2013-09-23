@@ -1,6 +1,6 @@
 public class Solution {
     private boolean is_all_digit(String s){
-        for( char a:s){
+        for( char a:s.toCharArray()){
            if  ( a <'0' || a > '9')
                return false;
 
