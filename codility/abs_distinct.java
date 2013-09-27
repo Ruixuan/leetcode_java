@@ -10,6 +10,7 @@ class Solution {
         do{
 
            if ( pt_n < A.length){
+               // arith overflow for −2,147,483,648 :(
                val_n = -A[pt_n];               
            }else{
                val_n = -1;
