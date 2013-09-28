@@ -15,8 +15,8 @@ public class Solution {
         int val_l, val_r;
         val_l = max_val(root.left);
         val_r = max_val(root.right);
-        if (val_l +　val_r + root.val > max)
-            max = val_l +　val_r + root.val;
+        if (val_l + val_r + root.val > max)
+            max = val_l + val_r + root.val;
         int ret_val;
         ret_val = root.val + val_l;
         if (ret_val < root.val + val_r)
@@ -28,7 +28,9 @@ public class Solution {
     public int maxPathSum(TreeNode root) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        max = 0;
+        if (null == root)
+            return 0;
+        max = root.val;
         max_val(root);
         return max;
         
