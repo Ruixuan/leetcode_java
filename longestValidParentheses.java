@@ -3,9 +3,9 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         char[] tokens = s.toCharArray();
-        int n = tokens.length();
+        int n = tokens.length;
         int[] left_match = new int[n]; // ')'
-        int[] righ_match = new int[n]; // '('
+        int[] right_match = new int[n]; // '('
         int left_count;
         int right_count;
         left_count = 0;
@@ -29,12 +29,12 @@ public class Solution {
                 right_count ++;
             else
                 right_count --;
-            if ( reft_count >= 0)
-                righ_match[i] = 1;
+            if ( right_count >= 0)
+                right_match[i] = 1;
             else{
-                righ_match[i] = 0;
+                right_match[i] = 0;
                 // reset 
-                righ_count = 0;
+                right_count = 0;
             }
        }
        int curr_len = 0 ; 
