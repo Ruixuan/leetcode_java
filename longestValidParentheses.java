@@ -1,4 +1,29 @@
-public class Solution {
+public class Solution{
+    public int longestValidParentheses(String s){
+        char[] tokens = s.toCharArray();
+        LinkedList<char> stack = new LinkedList<char>();
+        int curr_len, longest;
+        curr_len = 0;
+        longest = 0;
+        for(char a:tokens){
+            if ( a == '(')
+                stack.add(a);
+            else{
+                if (stack.isEmpty())
+                    curr_len = 0;
+                else{
+                    stack.pop();
+                    curr_len += 2;
+                    if (curr_len > longest)
+                        longest = curr_len;
+                }
+            }
+        }
+        return longest;
+    }
+}
+
+/*public class Solution {
     public int longestValidParentheses(String s) {
         // Start typing your Java solution below
         // DO NOT write main() function
@@ -50,4 +75,4 @@ public class Solution {
        return longest;
 
     }
-}
+}*/
