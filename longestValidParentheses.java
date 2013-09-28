@@ -40,7 +40,7 @@ public class Solution {
        int curr_len = 0 ; 
        int longest = 0;
        for(int i = 0; i < n ; i ++)
-           if ( righ_match[i] + left_match[i] == 2){
+           if ( right_match[i] + left_match[i] == 2){
                curr_len ++;
                if (curr_len > longest)
                    longest = curr_len;
