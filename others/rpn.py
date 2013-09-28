@@ -1,3 +1,8 @@
+import operator
+op_func = {'+': operator.add,
+           '-': operator.sub,
+           '*': operator.mul
+        }
 ops = ['#', ')', '+', '-', '*', '/', '(' ]
 
 ops_priorities = dict()
@@ -32,12 +37,19 @@ def get_postfix_notation(tokens):
     return postfix            
      
 def evaluation(post_fix_tokens):
-    print post_fix_tokens
-    return 0
+    s_number = list()
+    for one_token in post_fix_tokens:
+        if one_token.isdigit():
+            s_number.append(int(one_token))
+        else:
+            second = s_number.pop()
+            first = s_number.pop()
+            s_number.append(op_func[one_token](first,second))
 
+    return s_number.pop()
 
 # test 
 tokens = '( 3 + 4 ) + 5 * 9'.split()
-print tokens
 postfix = get_postfix_notation(tokens)
 val = evaluation(postfix)
+print val
