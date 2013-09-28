@@ -1,22 +1,22 @@
 public class Solution{
     public int longestValidParentheses(String s){
         char[] tokens = s.toCharArray();
-        LinkedList<Character> stack = new LinkedList<Character>();
+        LinkedList<Integer> stack = new LinkedList<Integer>();
         int curr_len, longest;
         curr_len = 0;
         longest = 0;
-        for(Character a:tokens){
-            if ( a.equals('('))
-                stack.add(a);
+        stack.add(0);
+        for( int i = 0; i < tokens.length; i ++){
+            if ( '(' == tokens[i])
+                stack.add(i);
             else{
-                if (stack.isEmpty())
-                    curr_len = 0;
-                else{
+                if (1 < stack.size()){
                     stack.pop();
-                    curr_len += 2;
+                    curr_len = i - stack.peekLast();
                     if (curr_len > longest)
                         longest = curr_len;
                 }
+                    
             }
         }
         return longest;
