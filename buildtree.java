@@ -1,4 +1,3 @@
-
 public class Solution {
     HashMap<Integer,Integer> index_map;
     int[] preorder;
@@ -18,7 +17,7 @@ public class Solution {
         int n = preorder.length;
         index_map = new HashMap<Integer, Integer>();
         for(int i = 0; i < n; i ++)
-            index_map.add( inorder[i], i );
+            index_map.put( inorder[i], i );
         this.preorder = preorder;
         this.inorder = inorder;
         return build( 0, n - 1, 0 , n - 1); 
