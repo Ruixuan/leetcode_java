@@ -2,7 +2,7 @@ class Solution {
     public int solution(int[] A) {
         // write your code here...
         int n = A.length;
-        long[] sum = new int[n];
+        long[] sum = new long[n];
         if (n > 0)
             sum[0] = A[0];
         else
