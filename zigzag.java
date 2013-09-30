@@ -1,17 +1,16 @@
 /**
  * Definition for binary tree
- * struct TreeNode {
+ * public class TreeNode {
  *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
  */
-class Solution {
-public:
-    vector<vector<int> > zigzagLevelOrder(TreeNode *root) {
-        // Start typing your C/C++ solution below
-        // DO NOT write int main() function
+public class Solution {
+    public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
         
     }
-};
+}
