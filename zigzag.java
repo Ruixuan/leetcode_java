@@ -31,7 +31,7 @@ public class Solution {
             TreeNode curr = bfs.remove();
             int curr_level = levels.remove();
             if (curr_level != pre_level){
-                if (pre_level % 2 == 1)
+                if (pre_level % 2 != 1)
                     Collections.reverse(one_answer);
                 answer.add(one_answer);
                 one_answer = new ArrayList<Integer>();
