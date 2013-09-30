@@ -22,6 +22,7 @@ public class Solution {
         answer = new ArrayList<ArrayList<Integer>>();
         bfs = new LinkedList<TreeNode>();
         ArrayList<Integer> one_level = new ArrayList<Integer>();
+        ArrayList<Integer> one_answer = new ArrayList<Integer>();
         int pre_level = 0;
         put(root, 0);
         
