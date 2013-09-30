@@ -41,6 +41,7 @@ public class Solution {
             put(curr.left, curr_level + 1);
             put(curr.right, curr_level + 1);
         }
+        answer.add(one_answer);
     }
 
     public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
