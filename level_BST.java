@@ -8,42 +8,52 @@
  * }
  */
 public class Solution {
-    public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+    private ArrayList<ArrayList<Integer>> answer;
+    private LinkedList<TreeNode> bfs;
+    private LinkedList<Integer> levels;
+    private void put(TreeNode root, int level){
+        if (null != root){
+            bfs.add(root);
+            levels.add(level);
+        }
+    }
+
+    private void bfs_search(TreeNode root){
+        levels = new LinkedList<Integer>();
+        answer = new ArrayList<ArrayList<Integer>>();
+        bfs = new LinkedList<TreeNode>();
+        ArrayList<Integer> one_level = new ArrayList<Integer>();
+        ArrayList<Integer> one_answer = new ArrayList<Integer>();
+        int pre_level = 0;
+        if (null != root){
+            bfs.add(root);
+            levels.add(0);
+        }
+        
+        while(!bfs.isEmpty()){
+            TreeNode curr = bfs.remove();
+            int curr_level = levels.remove();
+            if (curr_level != pre_level){
+                if (pre_level % 2 == 1)
+                    Collections.reverse(one_answer);
+                answer.add(one_answer);
+                one_answer = new ArrayList<Integer>();
+                pre_level = curr_level;
+            }
+            one_answer.add(curr.val);
+            put(curr.left, curr_level + 1);
+            put(curr.right, curr_level + 1);
+        }
+        if (pre_level % 2 == 1)
+            Collections.reverse(one_answer);
+        if (!one_answer.isEmpty())
+            answer.add(one_answer);
+    }
+
+    public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        ArrayList<ArrayList<Integer>> answer = new ArrayList<ArrayList<Integer>>();
-        if ( root == null)
-            return answer;
-        ArrayList<TreeNode> bfs = new ArrayList<TreeNode>();
-        ArrayList<Integer> level = new ArrayList<Integer>();
-        ArrayList<Integer> curr_level_list = new ArrayList<Integer>();
-        bfs.add(root);
-        level.add(0);
-        int index = 0;
-        TreeNode curr;
-        Integer curr_level = 0;
-        while(index < bfs.size()){
-            curr = bfs.get(index);
-            if ( level.get(index).equals(curr_level)){
-                curr_level_list.add(new Integer(curr.val));
-            }else{
-                answer.add(curr_level_list);
-                curr_level_list = new ArrayList<Integer>();
-                curr_level += 1;
-                curr_level_list.add(new Integer(curr.val));
-            }
-            //add left
-            if ( curr.left != null){
-                bfs.add(curr.left);
-                level.add(curr_level + 1);
-            }
-            if ( curr.right != null){
-                bfs.add(curr.right);
-                level.add(curr_level + 1);
-            }
-            index ++;
-        }
-        answer.add(curr_level_list);
+        bfs_search(root);
         return answer;
     }
 }
