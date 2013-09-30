@@ -19,6 +19,7 @@ public class Solution {
     }
 
     private void bfs_search(TreeNode root){
+        levels = new ArrayList<Integer>();
         answer = new ArrayList<ArrayList<Integer>>();
         bfs = new LinkedList<TreeNode>();
         ArrayList<Integer> one_level = new ArrayList<Integer>();
