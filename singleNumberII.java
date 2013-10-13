@@ -5,7 +5,7 @@ public class Solution{
             bits[i] = 0;
         for (int val: A)
             for (int i = 0; i < 32; i++)
-                bits[(val << i) & 1] ++;
+                bits[i] += (val >> i) & 1;
         int result = 0;                
         for (int i = 0; i < 32; i ++){
             result = result << 1;                
