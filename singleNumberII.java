@@ -7,10 +7,10 @@ public class Solution{
             for (int i = 0; i < 32; i++)
                 bits[i] += (val >> i) & 1;
         int result = 0;                
-        for (int i = 0; i < 32; i ++){
-            result = result << 1;                
+        for (int i = 0; i < 31; i ++){
+                         
             if (bits[i] % 3 != 0)
-                result = result | 1;
+                result = result | (1 << i);
         }
         return result;
     }
