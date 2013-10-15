@@ -22,7 +22,6 @@ def get_permute(curr_result, i, A, last_visited):
             count[a] -= c
             for j in range(i, i + c):
                 curr_result[j] = a
-
             get_permute(curr_result, i + c, A, a)
             count[a] += c
  
