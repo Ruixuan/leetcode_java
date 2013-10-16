@@ -14,6 +14,9 @@ class H2O{
             h_count = 0;
             o_count = 0;
             cvar.notifyall();
+            h_semaphore.signal();
+            h_semaphore.signal();
+            o_semaphore.signal();
         }else
             cvar.wait();
         mutex.release();    
