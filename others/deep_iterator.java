@@ -2,7 +2,8 @@ class DeepIterator implenments iterator{
     Stack<Iterator> s;
     public void DeepIterator(Iterator it){
         s = new Stack<Iterator>();
-        s.push(it);
+        if (s.hasNext())
+            s.push(it);
     }
 
     public Element next(){
@@ -16,9 +17,23 @@ class DeepIterator implenments iterator{
         }else{
            ret = val;            
         }
+        ret = null;
+        while(!s.isEmpty()){
+            top = s.top();
+            if (!top.hasNext()){
+                s.pop();
+                continue;
+            }
+            val = top.next();
+            if (val.isIter())
+                s.push(val);
+            else{
+                ret = val;
+                break;
+            }
 
-        if (!top.hasNext())
-            s.pop();
+        }
+        return ret;
     }
 
     public boolean hasNext(){
