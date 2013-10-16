@@ -1,0 +1,2 @@
+IntStream merge(IntStream[] stream){
+}
