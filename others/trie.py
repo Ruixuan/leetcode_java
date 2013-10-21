@@ -41,6 +41,7 @@ def build_trie(names):
 # test 
 names = ['Kate', 'James', 'Ann']
 root = build_trie(names)
-
+print root.look_up('James')
+print root.look_up('Jame')
 
 
