@@ -18,7 +18,7 @@ class H2O{
             h_semaphore.signal();
             o_semaphore.signal();
         }else
-            cvar.wait();
+            cvar.wait(mutex);
         mutex.release();    
 
     }
