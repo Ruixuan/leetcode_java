@@ -22,6 +22,10 @@ def find_next(root, node):
             curr = curr.left
     return suc
 
+
+
+
+
 #test
 root = Bst(5)
 num = [5,2,8,1,3,7,9,6]
@@ -31,7 +35,7 @@ for val in num:
 
 #print level by level
 root.level_print()
-print root.find(19)
-n3 = root.find(7)
-print find_next(root, n3).val
+#print root.find(19)
+#n3 = root.find(7)
+#print find_next(root, n3).val
 
