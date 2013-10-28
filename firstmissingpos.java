@@ -1,22 +1,22 @@
 public class Solution {
-    public int firstMissingPositive(int[] A) {
+public int firstMissingPositive(int[] A) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
         int i = 0, tmp;
         while( i < A.length){
-            while(A[i] > 0 && A[i] < A.length){
+            while(A[i] > 0 && A[i] <= A.length){
                 tmp = A[i];
-                if (A[tmp] == A[i])
+                if (A[tmp - 1] == A[i])
                     break;
-                A[i] = A[tmp];
-                A[tmp] = tmp;
+                A[i] = A[tmp - 1];
+                A[tmp - 1] = tmp;
             }
             i ++;
         }
-        for(int i = 1; i < A.length; i ++)
-            if (A[i] != i)
-                return i;
-        return A.length;
+        for( i = 0; i < A.length; i ++)
+            if (A[i] != i + 1)
+                return i + 1;
+        return A.length + 1;
         
     }
 }
