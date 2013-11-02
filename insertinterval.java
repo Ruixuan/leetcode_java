@@ -8,17 +8,25 @@
  * }
  */
 public class Solution {
+    private int max(int a, int b){
+        if (a > b) return a;
+            else return b;
+    }
+    private int min(int a, int b){
+        if (a < b) return a;
+            else   return b;
+    }
     public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
         // find the overlap range,remove the range and add new interval
         int head, tail;
-        int n = interval.size();
+        int n = intervals.size();
         head = 0;
         tail = n - 1;
         while( head <= tail){
             int mid = (head + tail) / 2;
-            if(interval.get(mid).end < newInterval.begin)
+            if(intervals.get(mid).end < newInterval.start)
                 head = mid + 1;
             else
                 tail = mid - 1;
@@ -28,7 +36,7 @@ public class Solution {
         tail = n - 1;
         while( head <= tail){
             int mid = (head + tail) / 2;
-            if(interval.get(mid).begin <= newInterval.end)
+            if(intervals.get(mid).start <= newInterval.end)
                 head = mid + 1;
             else
                 tail = mid - 1;
@@ -36,8 +44,8 @@ public class Solution {
         int end_index = head;
         if ( start_index < end_index){
             // there is overlap of new interval and existing intervals
-            newInterval.begin = min(intervals.get(start_index).start, newInterval.begin);
-            newInteval.end = max(intervals.get(end_index - 1).end, newInteval.end);
+            newInterval.start = min(intervals.get(start_index).start, newInterval.start);
+            newInterval.end = max(intervals.get(end_index - 1).end, newInterval.end);
             intervals.removeRange(start_index, end_index);
         }
         intervals.add(start_index, newInteval);
