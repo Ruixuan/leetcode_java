@@ -11,7 +11,7 @@ public class Solution {
             if (arr1[i] != arr2[i])
                 return false;
         int n = s1.length();
-        for(int i = 0; i < n; i ++){
+        for(int i = 0; i < n - 1; i ++){
             if( isScramble(s1.subString(0, i + 1), s2.subString(0, i + 1) &&
                 isScramble(s1.subString(i+1), s2.subString(i+1)) )
                 return true;
