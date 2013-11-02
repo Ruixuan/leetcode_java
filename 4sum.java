@@ -11,9 +11,10 @@ public class Solution {
             for( int j = n - 1; j > i; j --)
                 if( num[j] < num[j-1]){
                     int tmp = num[j];
-                    num[j] = num[i];
-                    num[i] = tmp;
+                    num[j] = num[j - 1];
+                    num[j - 1] = tmp;
                 }
+       
         // now find sum 4
         for(int i = 0; i < n - 3; i ++){
             if ( i > 0)
