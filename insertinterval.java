@@ -46,10 +46,9 @@ public class Solution {
             // there is overlap of new interval and existing intervals
             newInterval.start = min(intervals.get(start_index).start, newInterval.start);
             newInterval.end = max(intervals.get(end_index - 1).end, newInterval.end);
-            intervals.removeRange(start_index, end_index);
+            intervals.subList(start_index, end_index).clear();
         }
-        intervals.add(start_index, newInteval);
+        intervals.add(start_index, newInterval);
         return intervals;
-        
     }
 }
