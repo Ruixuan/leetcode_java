@@ -1,12 +1,17 @@
 public class Solution{
-    private int max(int a, int b){
-        if ( a > b) return a;
+    private int min(int a, int b){
+        if ( a < b) return a;
             else return b;
     }
 
     private int get_val(int[][] dp, int i, int j){
-        if ( i < 0 || j < 0)
-            return 0;
+        if ( i < 0 || j < 0){
+            if ( i < 0)
+                i = 0;
+            if ( j < 0)
+                j = 0;
+            return i + j;
+        }
         else
             return dp[i][j];
     }
@@ -28,13 +33,10 @@ public class Solution{
         
         for( int i = 0; i < m; i ++)
             for( int j = 0; j < n; j ++){
-                dp[i][j] = 0;
                 if ( w1[i] == w2[j])
-                    dp[i][j] = max(dp[i][j], get_val(dp, i - 1, j - 1) + 1);
-                dp[i][j] = max(dp[i][j], max(get_val(dp,i - 1,j), get_val(dp,i,j - 1)));
+                    dp[i][j] = get_val(dp, i - 1, j - 1);
+                dp[i][j] = min(dp[i][j], min(get_val(dp,i - 1,j) + 1, get_val(dp,i, j - 1) + 1) );
             }
-
         return abs(m - n) + dp[m - 1][n - 1];    
-
     }
 }
