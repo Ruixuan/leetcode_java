@@ -11,7 +11,9 @@ public class Solution {
     public boolean hasPathSum(TreeNode root, int sum) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
-        if(root == null) return sum == 0;
+        if(root == null) return false;
+        if(root.left == null && root.right == null)
+            return sum == root.val;
         return hasPathSum(root.right, sum - root.val) || hasPathSum(root.left, sum - root.val);
     }
 }
