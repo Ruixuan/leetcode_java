@@ -12,7 +12,7 @@ public class Solution {
     public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        ArrayList<ArrayList<Integer>> answer = new rrayList<ArrayList<Integer>>();
+        ArrayList<ArrayList<Integer>> answer = new ArrayList<ArrayList<Integer>>();
         if (root == null)
             return answer;
         LinkedList<TreeNode> next = new LinkedList<TreeNode>();
@@ -33,6 +33,8 @@ public class Solution {
                 Collections.reverse(one_line);
             answer.add(one_line);
             order = 1 - order;
+            pre = next;
+            next = new LinkedList<TreeNode>();
         }
         return answer;
     }
