@@ -1,14 +1,14 @@
 public class Solution {
-    int one_answer[];
+    ArrayList<Integer> one_answer;
     ArrayList<ArrayList<Integer>> answer;
     int n,k;
     private void fill(int i, int smallest){
-        if (i > k){
+        if (i >= k){
             answer.add(new ArrayList<Integer>(one_answer));
             return;
         }
-        for(int val = smallest + 1; val <= n - (k - i) + 1; val ++){
-            one_answer[i] = val;
+        for(int val = smallest + 1; val <= n - (k - i - 1); val ++){
+            one_answer.set(i,val);
             fill(i + 1, val);
         }
     }
@@ -17,7 +17,9 @@ public class Solution {
         // the same Solution instance will be reused for each test case.
         this.n = n;
         this.k = k;
-        one_answer = new int[k];
+        one_answer = new ArrayList<Integer>();
+        for(int i = 0; i < k ; i ++)
+            one_answer.add(0);
         answer = new ArrayList<ArrayList<Integer>>();
         fill(0,0);
         return answer;
