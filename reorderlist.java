@@ -21,8 +21,10 @@ public class Solution {
             return;
         // split the linkedlist by half
         len = 0;
-        while(pt != null)
+        while(pt != null){
             len ++;
+            pt = pt.next;
+        }
         ListNode first, second;
         first = head;
         pt = head;
