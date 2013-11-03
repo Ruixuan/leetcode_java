@@ -1,8 +1,6 @@
 public class Solution {
     private boolean is_all_digit(String s){
-    	if (s.length() == 0) 
-    		return false;
-        for( char a:s.toCharArray()){
+         for( char a:s.toCharArray()){
            if  ( a <'0' || a > '9')
                return false;
 
@@ -12,37 +10,32 @@ public class Solution {
     public boolean isNumber(String s) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        String front,back;
-        String[] tmp;
         s = s.trim();
-        tmp = s.split("e");
-        
-        if (tmp.length == 0)
-        	return false;
-        
-        if (tmp.length > 2){
-            return false;
-        }
-        if ( tmp.length == 2){
-            if (!is_all_digit(tmp[1]))
+        int index_e;
+        index_e = s.indexOf('e');
+        if (index_e != -1){
+            if(!is_all_digit(s.substring(index_e + 1)))
                 return false;
-        }
-        s = tmp[0];
-        tmp = s.split("\\.");
-        if (tmp.length == 0)
-        	return false;
-        
-        if (tmp.length > 2){
-            return false;
-        }
-     
-        if (tmp.length == 2){
-            return is_all_digit(tmp[0]) && is_all_digit(tmp[1]);
-        }else{
-        	
-            return is_all_digit(tmp[0]);
-        }
-
+            if(index_e == s.length())
+                return false;
+        }else
+            index_e = s.length();
+            
+        s = s.substring(0,index_e);
+        int index_dot;
+        index_dot = s.indexOf('.');
+        if (index_dot != -1){
+            String front, end;
+            front = s.substring(0, index_dot);
+            end = s.substring(index_dot + 1);
+            if ( !(is_all_digit(front) && is_all_digit(end)))
+                return false;
+            if(front.length() + end.length() == 0)
+                return false;
+        }else
+            return is_all_digit(s) && s.length() > 0;
+            
+        return true;
        
     }
 }
