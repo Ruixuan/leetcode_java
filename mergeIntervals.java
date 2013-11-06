@@ -8,7 +8,7 @@
  * }
  */
 public class Solution {
-    public IntervalComparator implements Comparator<Interval>{
+    public class IntervalComparator implements Comparator<Interval>{
         public int compare(Interval i1, Interval i2){
             if (i1.start > i2.start) return 1;
             if (i1.start < i2.start) return -1;
@@ -20,14 +20,14 @@ public class Solution {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
         if (intervals.isEmpty())
-            return intervals();
+            return intervals;
 
         Collections.sort(intervals, new IntervalComparator());
         ArrayList<Interval> answer = new ArrayList<Interval>();
-        curr = intervals.get(0);
+        Interval curr = intervals.get(0);
         for(int i = 1; i < intervals.size(); i ++){
-            next = intervals.get(i);
-            if (curr.end < next.begin){
+            Interval next = intervals.get(i);
+            if (curr.end < next.start){
                 answer.add(curr);
                 curr = next;
             }else{
