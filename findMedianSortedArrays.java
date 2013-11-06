@@ -3,10 +3,17 @@ public class Solution {
         // find the k-th element in two sorted array
         // two pointer: i, j and i + j = k
         // 1 3 5 7 9
-        // 2 4 6 8 10     
+        // 2 4 6 8 10
+        
+        if (A.length == 0)
+            return B[k - 1];
+            
+        if (B.length == 0)
+            return A[k -1];
+            
         int i = 0, j = 0;
         int head, tail, mid;
-        head = 1;
+        head = 0;
         tail = A.length;
         int flag;
         while(head <= tail){
@@ -16,8 +23,10 @@ public class Solution {
             j = k - i;
             if (j < 1)
                 flag = - 1;
+                
             if ( j > B.length)
                 flag = 1;
+                
             if ( j < B.length)
                 if(A[i - 1] > B[j])
                     flag = -1;
@@ -39,8 +48,8 @@ public class Solution {
         int m = A.length;
         int n = B.length;
         if ( (m + n) % 2 == 1)
-            return find(A, B, (m + n) / 2);
+            return find(A, B, (m + n) / 2 + 1);
         else
-            return ((double)(find(A, B, (m + n) / 2) + find(A, B, (m + n) / 2 - 1))) / 2;
+            return ((double)(find(A, B, (m + n) / 2) + find(A, B, (m + n) / 2 + 1))) / 2;
     }
 }
