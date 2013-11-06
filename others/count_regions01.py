@@ -12,7 +12,7 @@ def regions(mat):
                         if mat[i - 1][j] == 0:
                             flag = 0
                     j += 1
-            count += flag
+                count += flag
             j += 1
     
     return count
