@@ -9,6 +9,7 @@ public class Solution {
 
         head = 0;
         tail = A.length - 1;
+        
         while(head <= tail){
             mid = (head + tail) / 2;
             if (A[mid] <= target)
@@ -16,8 +17,10 @@ public class Solution {
             else
                 tail = mid - 1;
         }
-        if (A[tail] != target)
+        
+        if (tail < 0 || A[tail] != target)
             return answer;
+            
         answer[1] = tail;
         head = 0;
         tail = A.length - 1;
