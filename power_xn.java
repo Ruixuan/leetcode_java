@@ -9,10 +9,10 @@ public class Solution{
         }
         double answer = 1;
         while(n > 0){
-            if ( n & 1 == 1)
+            if ( (n & 1) == 1)
                 answer *= x;
             x = x * x;
-            n = n << 1;
+            n = n >> 1;
 
         }
         if (flag == 1)
