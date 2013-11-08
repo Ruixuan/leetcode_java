@@ -9,7 +9,7 @@ public class Solution {
             return B[k - 1];
             
         if (B.length == 0)
-            return A[k -1];
+            return A[k - 1];
             
         int i = 0, j = 0;
         int head, tail, mid;
@@ -21,25 +21,35 @@ public class Solution {
             mid = ( head + tail) / 2;
             i = mid;
             j = k - i;
-            if (j < 1)
-                flag = - 1;
+            
+            if (j < 0)
+                flag = -1;
                 
             if ( j > B.length)
                 flag = 1;
                 
-            if ( j < B.length)
-                if(A[i - 1] > B[j])
-                    flag = -1;
-            if (i < A.length)
-                if(A[i] < B[i - 1])
-                    flag = 1;
+            if (flag == 0){
+                if( j < B.length && i > 0)
+                    if(A[i - 1] > B[j])
+                        flag = -1;
+                if (i < A.length && j > 0)
+                    if(A[i] < B[j - 1])
+                        flag = 1;
+            }
+                    
             if (flag == 0)
                 break;
+                
             if (flag == 1)
                 head = mid + 1;
+                
             if (flag == -1)
                 tail = mid - 1;
         }
+        if (i == 0)
+            return B[j - 1];
+        if ( j == 0)
+            return A[i - 1];
         return Math.max(A[i  - 1], B[j - 1]);
     }
     public double findMedianSortedArrays(int A[], int B[]) {
