@@ -35,7 +35,7 @@ public class Solution {
         }
 
         int i = tmp.length - 1;
-        while(tmp[i] == 0 && i >= 0 )
+        while(tmp[i] == 0 && i > 0 )
             i --;
 
         StringBuilder sb = new StringBuilder();
