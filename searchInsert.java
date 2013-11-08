@@ -12,7 +12,7 @@ public class Solution {
             if (A[mid] < target)
                 head = mid + 1;
             else
-                head = mid - 1;
+                tail = mid - 1;
         }
         return tail + 1;
     }
