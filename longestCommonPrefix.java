@@ -3,8 +3,8 @@ public class Solution {
         // IMPORTANT: Please reset any member data you declared, asa
         // the same Solution instance will be reused for each test case.
         if (strs.length == 0)
-            return null;
-        len = 0;
+            return "";
+        int len = 0;
         char curr;
         int flag = 1;
         while(flag == 1 && len < strs[0].length()){
@@ -15,6 +15,9 @@ public class Solution {
             if (flag == 1)
                 len ++;
         }
-        return len;
+        if (len == 0)
+            return "";
+        else
+            return strs[0].substring(0,len);
     }
 }
