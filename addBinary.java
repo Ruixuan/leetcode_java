@@ -3,11 +3,11 @@ public class Solution {
         for(int i = 0; i < a.length / 2 ; i ++){
             char tmp = a[i];
             a[i] = a[a.length - i - 1];
-            a[a.length - i - 1] = a[i];
+            a[a.length - i - 1] = tmp;
         }
     }
     private int char2int(char a){
-        return (int)(a - '0')
+        return (int)(a - '0');
     }
     public String addBinary(String a, String b) {
         char[] ac = a.toCharArray();
