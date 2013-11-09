@@ -20,9 +20,11 @@ public class Solution {
     public ListNode mergeKLists(ArrayList<ListNode> lists) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
+        if (lists == null || lists.size() == 0)
+            return null;
         int n;
         n = lists.size();
-        PriorityQueue q = new PriorityQueue(n, new MyComparator());
+        PriorityQueue<ListNode> q = new PriorityQueue<ListNode>(n, new MyComparator());
         for(ListNode one_list: lists){
             if (null != one_list)
                     q.offer(one_list);
