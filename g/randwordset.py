@@ -1,0 +1,13 @@
+/* 
+
+Random set of WORD. 
+
+Criterion : Given a word find out if the word can be broken into smaller word, by removing one alphabet at a time. 
+a) all such word should be valid dictionary word.( Assume a function is there to test whether the word exist in dictionary) 
+b) Remove one alphabet at a time but the new word need to be in dictionary. 
+
+For eg : 
+restated -> restate -> estate -> state -> stat -> sat -> at -> a 
+fullfill the criterion. ( single alphabet assume belong to dict) 
+My solution below. I assume it can be done using dynamic programming or trie data structure 
+*/
