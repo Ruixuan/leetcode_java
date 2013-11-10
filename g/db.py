@@ -19,4 +19,4 @@ def de_bruijn(k, n):
     db(1, 1)
     return sequence
  
-print(de_bruijn(4, 10))
+print(len(de_bruijn(10, 4)))
