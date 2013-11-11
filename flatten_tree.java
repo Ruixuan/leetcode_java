@@ -13,17 +13,21 @@ public class Solution {
         // the same Solution instance will be reused for each test case.
         Stack<TreeNode> s = new Stack<TreeNode>();
         s.push(null);
-        curr = root;
+        TreeNode curr = root;
+
         while(curr != null){
            if (curr.left != null)
                s.push(curr.left);
+           TreeNode next;
            if (curr.right != null){
-               curr.left = curr.right;
-               curr = curr.right;
+               next = curr.right;
            }else{
-               curr.left = s.pop();
-               curr = curr.left;
+               next = s.pop();
            }
+           curr.right = null;
+           curr.left = next;
+           curr = next;
         }
+
     }
 }
