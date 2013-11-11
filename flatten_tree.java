@@ -8,27 +8,22 @@
  * }
  */
 public class Solution {
-    private TreeNode flat(TreeNode root, TreeNode tail){
-        if (root == null)
-            return null;
-
-        TreeNode l, r;
-        r = flat(root.right, root);
-        l = flat(root.left, tail);
-        if (l == null)
-            root.left = tail;
-
-        root.right = null;
-        if(r != null)
-            return r;
-        else 
-            return root;
-
-    }
-
     public void flatten(TreeNode root) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
-        return flat(root, null);
+        Stack<TreeNode> s = new Stack<TreeNode>();
+        s.push(null);
+        curr = root;
+        while(curr != null){
+           if (curr.left != null)
+               s.push(curr.left);
+           if (curr.right != null){
+               curr.left = curr.right;
+               curr = curr.right;
+           }else{
+               curr.left = s.pop();
+               curr = curr.left;
+           }
+        }
     }
 }
