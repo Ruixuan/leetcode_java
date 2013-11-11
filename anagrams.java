@@ -7,7 +7,7 @@ public class Solution {
     public ArrayList<String> anagrams(String[] strs) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
-        HashSet<String, String> sig_map = new HashSet<String, String>();
+        HashMap<String, String> sig_map = new HashMap<String, String>();
         String target = null;
         ArrayList<String> answer = new ArrayList();
         for(String s:strs){
@@ -22,11 +22,10 @@ public class Solution {
                 }
             }else{
                 // target not null
-                if (target.equals(sig)
+                if (target.equals(sig))
                     answer.add(s);
             }
         }
         return answer;
-        
     }
 }
