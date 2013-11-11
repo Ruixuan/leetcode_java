@@ -55,6 +55,6 @@ public class Solution {
             ptr = ptr.next;
             len ++;
         }
-        return buildTree(head, n).root;       
+        return buildTree(head, len).root;       
     }
 }
