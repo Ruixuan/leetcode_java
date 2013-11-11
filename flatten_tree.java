@@ -16,16 +16,16 @@ public class Solution {
         TreeNode curr = root;
 
         while(curr != null){
-           if (curr.left != null)
-               s.push(curr.left);
+           if (curr.right != null)
+               s.push(curr.right);
            TreeNode next;
-           if (curr.right != null){
-               next = curr.right;
+           if (curr.left != null){
+               next = curr.left;
            }else{
                next = s.pop();
            }
-           curr.right = null;
-           curr.left = next;
+           curr.right = next;
+           curr.left = null;
            curr = next;
         }
 
