@@ -2,16 +2,18 @@ public class Solution{
     public ArrayList<Integer> grayCode(int n){
         ArrayList<Integer> answer = new ArrayList<Integer>();
         answer.add(0);
-        int[] bits = new int[n];
+        int m = 1 << n;
+        int[] bits = new int[m];
         int pow2 = 0;
-        for(int i = 1; i < n; i ++){
-            if (i == (1 << pow2)){
+        for(int i = 0; i < m; i ++){
+            if (i + 1 == (1 << pow2)){
                 bits[i] = pow2;
-                for(int j = 1; j < i; j ++)
-                    if (i + j < n)
-                        bits[i + j] = bits[j];
+                pow2 ++;
+                for(int j = 0; j < i; j ++)
+                    if (i + j + 1 < m)
+                        bits[i + j + 1] = bits[j];
             }
-            answer.add(answer.get(answer.size() - 1) ^ (1 >> bits[i]));
+            answer.add(answer.get(answer.size() - 1) ^ (1 << bits[i]));
         }
         return answer;
     }
